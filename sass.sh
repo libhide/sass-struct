@@ -1,5 +1,4 @@
 #!/bin/bash
-
 mkdir sass
 cd sass
 touch main.scss
@@ -18,20 +17,22 @@ touch _header.scss _footer.scss _forms.scss _grid.scss _all.scss
 echo -e "@import 'grid';\n@import 'header';\n@import 'footer';\n@import 'forms';\n" > _all.scss
 cd ../pages
 touch _home.scss _contact.scss _about.scss _all.scss
-echo -e "@import 'home';\n@import 'contact';\n@import 'about'" > _all.scss
+echo -e "@import 'home';\n@import 'contact';\n@import 'about';" > _all.scss
 cd ../vendors
 touch _all.scss
 read -p "Do you want to install bourbon? (y/n): " bourbon
-if [ $bourbon = "y" ]; then
+if [ $bourbon = "y" ]
+then
     bourbon install
     echo -e "@import 'bourbon/bourbon';\n" > _all.scss
 fi
 read -p "Do you want to install neat? (y/n): " neat
-if [ $neat = "y" ]; then
+if [ $neat = "y" ]
+then
     neat install
-    echo -e "@import 'neat/neat';\n" > _all.scss
+    echo -e "@import 'neat/neat';\n" >> _all.scss
 fi
 cd ..
-echo -e "@import 'base/all';\n@import 'components/all';\n@import 'helpers/all';\n@import 'layout/all';\n@import 'pages/all';\n@import 'vendors/all';\n" > main.scss
+echo -e "@import 'vendors/all';\n@import 'components/all';\n@import 'helpers/all';\n@import 'base/all';\n@import 'layout/all';\n@import 'pages/all';\n" > main.scss
 echo "All done! Sass-away!"
 exit
